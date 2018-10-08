@@ -3,15 +3,17 @@ export class HungryBear {
   constructor(name) {
     this.name = name;
     this.foodLevel = 10;
+    this.time = 10000;
   }
 
   setHunger() {
-    setInterval(() => {
+    let timer = setInterval(() => {
       this.foodLevel--;
+      if (this.foodLevel === 0) {
+        clearInterval(timer);
+      }
     }, 1000);
-    if (this.foodLevel === 0) {
-      clearInterval();
-    }
+
   }
 
   didYouGetEaten() {
@@ -31,7 +33,6 @@ export class HungryBear {
   gameOver() {
     this.didYouGetEaten = true;
     this.foodlevel = 0;
-    // clearInterval();
 
   }
 }

@@ -32,7 +32,7 @@ describe('HungryBear', function() {
 
   it('should get very hungry if 10 seconds pass without feeding', function() {
     jasmine.clock().tick(10001);
-    expect(fuzzy.didYouGetEaten()).toEqual(true);
+    expect(fuzzy.didYouGetEaten).toEqual(true);
   });
 
   it('should have a food level of ten if it is fed', function() {
@@ -46,8 +46,9 @@ describe('HungryBear', function() {
     expect(fuzzy.didYouGetEaten).toEqual(true);
   });
 
-  it('should reset foodLevel to 10 when game over', function() {
+  it('should stop timer when foodLevel equals zero', function() {
+    jasmine.clock().tick(11001);
     fuzzy.setHunger();
-    expect(fuzzy.foodLevel).toEqual(10);
+    expect(fuzzy.foodLevel).toEqual(0);
   });
 });
